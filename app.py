@@ -29,7 +29,6 @@ st.set_page_config(
 # ============================================================================
 st.markdown("""
 <style>
-    /* Import Sora + Barlow */
     @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600;700&display=swap');
     
     :root {
@@ -46,13 +45,11 @@ st.markdown("""
         --card-bg: rgba(17, 24, 39, 0.7);
     }
     
-    /* Main background with dense starfield */
     .stApp {
         background: radial-gradient(ellipse at top, #0f172a 0%, #05080d 50%, #000000 100%);
         background-attachment: fixed;
     }
     
-    /* Dense animated starfield */
     .stApp::before {
         content: '';
         position: fixed;
@@ -62,7 +59,6 @@ st.markdown("""
         height: 100%;
         pointer-events: none;
         background-image: 
-            /* Bright stars */
             radial-gradient(2px 2px at 50px 50px, #ffffff, transparent),
             radial-gradient(2px 2px at 150px 80px, #ffffff, transparent),
             radial-gradient(2px 2px at 250px 120px, #ffffff, transparent),
@@ -73,7 +69,6 @@ st.markdown("""
             radial-gradient(2px 2px at 750px 60px, #ffffff, transparent),
             radial-gradient(2px 2px at 850px 180px, #ffffff, transparent),
             radial-gradient(2px 2px at 950px 100px, #ffffff, transparent),
-            /* Medium stars */
             radial-gradient(1.5px 1.5px at 100px 30px, rgba(255,255,255,0.9), transparent),
             radial-gradient(1.5px 1.5px at 200px 150px, rgba(255,255,255,0.9), transparent),
             radial-gradient(1.5px 1.5px at 300px 70px, rgba(255,255,255,0.9), transparent),
@@ -83,7 +78,6 @@ st.markdown("""
             radial-gradient(1.5px 1.5px at 700px 170px, rgba(255,255,255,0.9), transparent),
             radial-gradient(1.5px 1.5px at 800px 130px, rgba(255,255,255,0.9), transparent),
             radial-gradient(1.5px 1.5px at 900px 50px, rgba(255,255,255,0.9), transparent),
-            /* Small stars */
             radial-gradient(1px 1px at 25px 80px, rgba(255,255,255,0.7), transparent),
             radial-gradient(1px 1px at 75px 140px, rgba(255,255,255,0.7), transparent),
             radial-gradient(1px 1px at 125px 20px, rgba(255,255,255,0.7), transparent),
@@ -104,7 +98,6 @@ st.markdown("""
             radial-gradient(1px 1px at 875px 190px, rgba(255,255,255,0.7), transparent),
             radial-gradient(1px 1px at 925px 55px, rgba(255,255,255,0.7), transparent),
             radial-gradient(1px 1px at 975px 135px, rgba(255,255,255,0.7), transparent),
-            /* Colored accent stars */
             radial-gradient(2px 2px at 180px 45px, rgba(6,182,212,0.8), transparent),
             radial-gradient(2px 2px at 420px 125px, rgba(236,72,153,0.8), transparent),
             radial-gradient(2px 2px at 680px 85px, rgba(16,185,129,0.8), transparent),
@@ -120,7 +113,6 @@ st.markdown("""
         100% { opacity: 1; }
     }
     
-    /* Sidebar */
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, rgba(10,14,23,0.97) 0%, rgba(17,24,39,0.97) 100%);
         border-right: 1px solid rgba(6,182,212,0.15);
@@ -128,7 +120,6 @@ st.markdown("""
     
     [data-testid="stSidebar"] .stMarkdown { color: var(--star-white); }
     
-    /* Typography */
     .main-header {
         font-family: 'Sora', sans-serif;
         font-size: 3rem;
@@ -166,7 +157,6 @@ st.markdown("""
         text-transform: uppercase;
     }
     
-    /* Tabs */
     .stTabs [data-baseweb="tab-list"] {
         gap: 4px;
         background: rgba(17,24,39,0.6);
@@ -198,7 +188,6 @@ st.markdown("""
     
     .stMarkdown, .stText { color: var(--star-white); font-family: 'Barlow', sans-serif; }
     
-    /* Inputs */
     .stNumberInput > div > div > input,
     .stTextInput > div > div > input,
     .stSelectbox > div > div {
@@ -209,7 +198,6 @@ st.markdown("""
         font-family: 'Barlow', sans-serif !important;
     }
     
-    /* Buttons */
     .stButton > button {
         font-family: 'Sora', sans-serif !important;
         font-weight: 600 !important;
@@ -236,7 +224,6 @@ st.markdown("""
         color: var(--cosmic-cyan) !important;
     }
     
-    /* Metrics */
     [data-testid="stMetric"] {
         background: var(--card-bg);
         border: 1px solid rgba(6,182,212,0.15);
@@ -258,7 +245,6 @@ st.markdown("""
         font-weight: 600 !important;
     }
     
-    /* File uploader */
     [data-testid="stFileUploader"] {
         background: rgba(17,24,39,0.5);
         border: 1px dashed rgba(6,182,212,0.3);
@@ -266,7 +252,6 @@ st.markdown("""
         padding: 16px;
     }
     
-    /* Messages */
     .stSuccess { background: rgba(16,185,129,0.1) !important; border: 1px solid rgba(16,185,129,0.3) !important; border-radius: 6px !important; }
     .stWarning { background: rgba(245,158,11,0.1) !important; border: 1px solid rgba(245,158,11,0.3) !important; border-radius: 6px !important; }
     .stError { background: rgba(239,68,68,0.1) !important; border: 1px solid rgba(239,68,68,0.3) !important; border-radius: 6px !important; }
@@ -278,7 +263,6 @@ st.markdown("""
         margin: 1.5rem 0;
     }
     
-    /* Clean Stress Index Tiles */
     .stress-index-container {
         display: flex;
         flex-direction: column;
@@ -298,46 +282,15 @@ st.markdown("""
         transition: all 0.2s ease;
     }
     
-    .stress-tile:hover {
-        transform: translateX(4px);
-    }
+    .stress-tile:hover { transform: translateX(4px); }
     
-    .stress-tile-low {
-        background: rgba(16,185,129,0.1);
-        border: 1px solid rgba(16,185,129,0.3);
-        color: #10b981;
-    }
+    .stress-tile-low { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #10b981; }
+    .stress-tile-moderate { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); color: #f59e0b; }
+    .stress-tile-high { background: rgba(236,72,153,0.1); border: 1px solid rgba(236,72,153,0.3); color: #ec4899; }
+    .stress-tile-severe { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #ef4444; }
     
-    .stress-tile-moderate {
-        background: rgba(245,158,11,0.1);
-        border: 1px solid rgba(245,158,11,0.3);
-        color: #f59e0b;
-    }
-    
-    .stress-tile-high {
-        background: rgba(236,72,153,0.1);
-        border: 1px solid rgba(236,72,153,0.3);
-        color: #ec4899;
-    }
-    
-    .stress-tile-severe {
-        background: rgba(239,68,68,0.1);
-        border: 1px solid rgba(239,68,68,0.3);
-        color: #ef4444;
-    }
-    
-    .stress-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        flex-shrink: 0;
-    }
-    
-    .stress-range {
-        margin-left: auto;
-        font-size: 0.75rem;
-        opacity: 0.7;
-    }
+    .stress-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .stress-range { margin-left: auto; font-size: 0.75rem; opacity: 0.7; }
     
     .footer {
         font-family: 'Barlow', sans-serif;
@@ -358,9 +311,102 @@ st.markdown("""
         margin: 10px 0;
     }
     
-    /* Dialog/Modal styling */
-    [data-testid="stModal"] {
-        background: rgba(10,14,23,0.98) !important;
+    /* Help section styling */
+    .help-step {
+        background: rgba(17,24,39,0.6);
+        border: 1px solid rgba(6,182,212,0.2);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 12px 0;
+    }
+    
+    .help-step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background: linear-gradient(135deg, #06b6d4, #10b981);
+        color: #05080d;
+        font-family: 'Sora', sans-serif;
+        font-weight: 600;
+        font-size: 0.85rem;
+        border-radius: 50%;
+        margin-right: 12px;
+    }
+    
+    .help-step-title {
+        font-family: 'Sora', sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        color: #f0f4f8;
+        display: inline;
+    }
+    
+    .help-link {
+        color: #06b6d4;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .help-link:hover {
+        text-decoration: underline;
+    }
+    
+    .help-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-family: 'Barlow', sans-serif;
+        font-size: 0.9rem;
+    }
+    
+    .help-table th {
+        background: rgba(6,182,212,0.15);
+        color: #06b6d4;
+        padding: 12px;
+        text-align: left;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(6,182,212,0.3);
+    }
+    
+    .help-table td {
+        padding: 12px;
+        color: #f0f4f8;
+        border-bottom: 1px solid rgba(6,182,212,0.1);
+    }
+    
+    .help-table tr:hover {
+        background: rgba(6,182,212,0.05);
+    }
+    
+    .file-tag {
+        display: inline-block;
+        background: rgba(16,185,129,0.15);
+        border: 1px solid rgba(16,185,129,0.3);
+        color: #10b981;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-family: 'Barlow', sans-serif;
+        font-size: 0.8rem;
+        margin: 2px;
+    }
+    
+    .tip-box {
+        background: rgba(245,158,11,0.1);
+        border: 1px solid rgba(245,158,11,0.3);
+        border-left: 3px solid #f59e0b;
+        border-radius: 6px;
+        padding: 14px 16px;
+        margin: 16px 0;
+    }
+    
+    .tip-box-title {
+        font-family: 'Sora', sans-serif;
+        font-weight: 600;
+        color: #f59e0b;
+        font-size: 0.85rem;
+        margin-bottom: 6px;
     }
     
     #MainMenu {visibility: hidden;}
@@ -472,16 +518,12 @@ def process_raw_expression_data(df, control_pattern=None):
     return pd.DataFrame(results)
 
 
-# Dialog for Single Prediction Results
 @st.dialog("Analysis Results", width="large")
 def show_single_result(pred, condition):
     cat, css, emoji, color = get_stress_category(pred)
-    
     col1, col2 = st.columns([1.5, 1])
-    
     with col1:
         st.plotly_chart(create_gauge_chart(pred), use_container_width=True)
-    
     with col2:
         st.markdown(f"""
         <div style="padding: 20px; text-align: center;">
@@ -491,59 +533,32 @@ def show_single_result(pred, condition):
             <div style="font-family: Sora; font-size: 1rem; color: #f0f4f8;">{condition}</div>
         </div>
         """, unsafe_allow_html=True)
-    
     st.markdown("---")
-    
-    if cat == "LOW":
-        st.success("**Low Stress** — Minimal gene expression changes. Sample within normal parameters.")
-    elif cat == "MODERATE":
-        st.warning("**Moderate Stress** — Measurable signatures detected. Adaptive responses in manageable range.")
-    elif cat == "HIGH":
-        st.warning("**High Stress** — Significant dysregulation. Recommend monitoring for physiological impacts.")
-    else:
-        st.error("**Severe Stress** — Extensive changes detected. Immediate assessment recommended.")
-    
-    if st.button("Close", use_container_width=True):
-        st.rerun()
+    if cat == "LOW": st.success("**Low Stress** — Minimal gene expression changes. Sample within normal parameters.")
+    elif cat == "MODERATE": st.warning("**Moderate Stress** — Measurable signatures detected. Adaptive responses in manageable range.")
+    elif cat == "HIGH": st.warning("**High Stress** — Significant dysregulation. Recommend monitoring for physiological impacts.")
+    else: st.error("**Severe Stress** — Extensive changes detected. Immediate assessment recommended.")
+    if st.button("Close", use_container_width=True): st.rerun()
 
 
-# Dialog for Batch Prediction Results  
 @st.dialog("Batch Analysis Results", width="large")
 def show_batch_results(feat_df, preds):
     feat_df['predicted_stress_score'] = preds
     feat_df['stress_category'] = [get_stress_category(p)[0] for p in preds]
-    
     col1, col2, col3, col4 = st.columns(4)
     with col1: st.metric("Mean", f"{preds.mean():.1f}")
     with col2: st.metric("Min", f"{preds.min():.1f}")
     with col3: st.metric("Max", f"{preds.max():.1f}")
     with col4: st.metric("High Stress", f"{(preds >= 50).sum()}/{len(preds)}")
-    
     st.markdown("---")
-    
-    st.dataframe(
-        feat_df[['sample_id', 'organism', 'condition', 'tissue', 'predicted_stress_score', 'stress_category']].round({'predicted_stress_score': 1}),
-        use_container_width=True,
-        height=250
-    )
-    
-    fig = px.histogram(feat_df, x='predicted_stress_score', color='condition', nbins=15, barmode='overlay', 
-                       color_discrete_sequence=['#06b6d4', '#ec4899', '#10b981', '#f59e0b'])
-    fig.update_layout(
-        paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
-        font=dict(family='Barlow', color='#9ca3af', size=11),
-        height=250, margin=dict(l=20, r=20, t=30, b=20),
-        xaxis=dict(gridcolor='rgba(6,182,212,0.1)'),
-        yaxis=dict(gridcolor='rgba(6,182,212,0.1)')
-    )
+    st.dataframe(feat_df[['sample_id', 'organism', 'condition', 'tissue', 'predicted_stress_score', 'stress_category']].round({'predicted_stress_score': 1}), use_container_width=True, height=250)
+    fig = px.histogram(feat_df, x='predicted_stress_score', color='condition', nbins=15, barmode='overlay', color_discrete_sequence=['#06b6d4', '#ec4899', '#10b981', '#f59e0b'])
+    fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font=dict(family='Barlow', color='#9ca3af', size=11), height=250, margin=dict(l=20, r=20, t=30, b=20), xaxis=dict(gridcolor='rgba(6,182,212,0.1)'), yaxis=dict(gridcolor='rgba(6,182,212,0.1)'))
     st.plotly_chart(fig, use_container_width=True)
-    
     col1, col2 = st.columns(2)
-    with col1:
-        st.download_button("📥 Download CSV", feat_df.to_csv(index=False), "stellarseq_results.csv", "text/csv", use_container_width=True)
+    with col1: st.download_button("📥 Download CSV", feat_df.to_csv(index=False), "stellarseq_results.csv", "text/csv", use_container_width=True)
     with col2:
-        if st.button("Close", use_container_width=True):
-            st.rerun()
+        if st.button("Close", use_container_width=True): st.rerun()
 
 
 def main():
@@ -554,37 +569,18 @@ def main():
         st.markdown('<div style="text-align:center;padding:16px 0;"><span style="font-size:3rem;">🛸</span></div>', unsafe_allow_html=True)
         st.markdown('<p class="section-header">Mission Brief</p>', unsafe_allow_html=True)
         st.markdown('<div class="sidebar-card"><p style="color:#f0f4f8;font-family:Barlow;margin:0;font-size:0.9rem;line-height:1.6;"><strong style="color:#06b6d4;">StellarSeq</strong> predicts astronaut stress from gene expression using ML trained on NASA spaceflight genomics.</p></div>', unsafe_allow_html=True)
-        
         st.markdown('<p class="section-header">Model Stats</p>', unsafe_allow_html=True)
         c1, c2 = st.columns(2)
         with c1: st.metric("R² Score", "0.974"); st.metric("Samples", "112")
         with c2: st.metric("RMSE", "2.92"); st.metric("Features", "14")
-        
         st.markdown("---")
         st.markdown('<p class="section-header">Stress Index</p>', unsafe_allow_html=True)
-        
         st.markdown("""
         <div class="stress-index-container">
-            <div class="stress-tile stress-tile-low">
-                <div class="stress-dot" style="background:#10b981;"></div>
-                <span>Low</span>
-                <span class="stress-range">0-25</span>
-            </div>
-            <div class="stress-tile stress-tile-moderate">
-                <div class="stress-dot" style="background:#f59e0b;"></div>
-                <span>Moderate</span>
-                <span class="stress-range">25-50</span>
-            </div>
-            <div class="stress-tile stress-tile-high">
-                <div class="stress-dot" style="background:#ec4899;"></div>
-                <span>High</span>
-                <span class="stress-range">50-75</span>
-            </div>
-            <div class="stress-tile stress-tile-severe">
-                <div class="stress-dot" style="background:#ef4444;"></div>
-                <span>Severe</span>
-                <span class="stress-range">75-100</span>
-            </div>
+            <div class="stress-tile stress-tile-low"><div class="stress-dot" style="background:#10b981;"></div><span>Low</span><span class="stress-range">0-25</span></div>
+            <div class="stress-tile stress-tile-moderate"><div class="stress-dot" style="background:#f59e0b;"></div><span>Moderate</span><span class="stress-range">25-50</span></div>
+            <div class="stress-tile stress-tile-high"><div class="stress-dot" style="background:#ec4899;"></div><span>High</span><span class="stress-range">50-75</span></div>
+            <div class="stress-tile stress-tile-severe"><div class="stress-dot" style="background:#ef4444;"></div><span>Severe</span><span class="stress-range">75-100</span></div>
         </div>
         """, unsafe_allow_html=True)
     
@@ -593,7 +589,7 @@ def main():
     
     feature_cols = ['mean_expression', 'std_expression', 'median_expression', 'gene_count', 'mean_fold_change', 'std_fold_change', 'mean_abs_fold_change', 'n_upregulated', 'n_downregulated', 'n_significant', 'organism_code_encoded', 'condition_encoded', 'tissue_encoded', 'study_id_encoded']
     
-    tab1, tab2, tab3 = st.tabs(["ℹ️ About", "🎯 Single Prediction", "📡 Batch Upload"])
+    tab1, tab2, tab3, tab4 = st.tabs(["ℹ️ About", "🎯 Single Prediction", "📡 Batch Upload", "❓ Help"])
     
     # ABOUT TAB
     with tab1:
@@ -613,14 +609,8 @@ def main():
                 <li>Immune system modulation</li>
             </ul>
             """, unsafe_allow_html=True)
-            
             st.markdown('<p class="section-header">Data Sources</p>', unsafe_allow_html=True)
-            st.markdown("""
-            <div style="font-family:Barlow;color:#9ca3af;line-height:1.8;font-size:0.9rem;">
-            Trained on <strong style="color:#10b981;">9 spaceflight studies</strong> from NASA OSDR including mouse and human organisms across multiple tissue types.
-            </div>
-            """, unsafe_allow_html=True)
-        
+            st.markdown('<div style="font-family:Barlow;color:#9ca3af;line-height:1.8;font-size:0.9rem;">Trained on <strong style="color:#10b981;">9 spaceflight studies</strong> from NASA OSDR including mouse and human organisms across multiple tissue types.</div>', unsafe_allow_html=True)
         with c2:
             st.markdown('<p class="section-header">Performance</p>', unsafe_allow_html=True)
             st.markdown("""
@@ -634,24 +624,15 @@ def main():
                 </table>
             </div>
             """, unsafe_allow_html=True)
-        
         st.markdown("---")
         st.markdown('<p class="section-header">Feature Analysis</p>', unsafe_allow_html=True)
         fig = create_feature_importance_chart(model, feature_cols)
         if fig: st.plotly_chart(fig, use_container_width=True)
-        
-        st.markdown("""
-        <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:6px;padding:14px;margin-top:16px;">
-            <p style="color:#f59e0b;font-family:Barlow;margin:0;font-size:0.85rem;">
-            <strong>Disclaimer:</strong> For research and educational purposes only. Predictions should be validated by qualified researchers.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown('<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:6px;padding:14px;margin-top:16px;"><p style="color:#f59e0b;font-family:Barlow;margin:0;font-size:0.85rem;"><strong>Disclaimer:</strong> For research and educational purposes only. Predictions should be validated by qualified researchers.</p></div>', unsafe_allow_html=True)
     
     # SINGLE PREDICTION TAB
     with tab2:
         st.markdown('<p class="section-header">Manual Input</p>', unsafe_allow_html=True)
-        
         c1, c2 = st.columns(2)
         with c1:
             st.markdown("##### Expression Statistics")
@@ -663,7 +644,6 @@ def main():
             mean_fc = st.number_input("Mean Fold Change", value=0.5, step=0.1, key="s_mfc")
             std_fc = st.number_input("Std Fold Change", value=1.0, step=0.1, key="s_sfc")
             mean_abs_fc = st.number_input("Mean Abs Fold Change", value=0.8, step=0.1, key="s_mafc")
-        
         with c2:
             st.markdown("##### Differential Expression")
             n_up = st.number_input("# Upregulated", value=500, step=100, key="s_up")
@@ -674,9 +654,7 @@ def main():
             condition = st.selectbox("Condition", ["Ground Control", "Spaceflight", "Radiation", "Hindlimb Unload"], key="s_cond")
             tissue = st.selectbox("Tissue", ["Thymus", "Liver", "Muscle", "Blood", "Retina", "Skin", "Other"], key="s_tis")
             study_id = st.slider("Study ID", 0, 10, 5, key="s_sid")
-        
         st.markdown("")
-        
         if st.button("🚀 Analyze Sample", type="primary", use_container_width=True, key="single_btn"):
             org_map = {"Mouse": 0, "Human": 1}
             cond_map = {"Ground Control": 0, "Spaceflight": 1, "Radiation": 2, "Hindlimb Unload": 3}
@@ -688,7 +666,6 @@ def main():
     # BATCH UPLOAD TAB
     with tab3:
         st.markdown('<p class="section-header">NASA OSDR Data Upload</p>', unsafe_allow_html=True)
-        
         with st.expander("📋 Data Format Specification"):
             st.markdown("""
             **Expected format:** Gene expression matrix with genes as rows, samples as columns.
@@ -699,29 +676,174 @@ def main():
             
             **Sample naming:** `Mmus_LVR_FLT_Rep1` → Mouse, Liver, Flight
             """)
-        
         uploaded = st.file_uploader("Upload Expression Matrix", type=['csv', 'tsv', 'txt'], key="batch_file")
-        
         c1, c2 = st.columns(2)
         with c1: ctrl = st.text_input("Control pattern (optional)", placeholder="_GC_", key="b_ctrl")
         with c2: sid = st.number_input("Study ID", value=0, key="b_sid")
-        
         if uploaded:
             try:
                 df = pd.read_csv(uploaded, sep='\t' if uploaded.name.endswith(('.tsv', '.txt')) else ',')
                 st.success(f"✅ Loaded: **{len(df):,} genes** × **{len(df.columns)} columns**")
-                
-                with st.expander("Preview Data"):
-                    st.dataframe(df.head(8), use_container_width=True)
-                
+                with st.expander("Preview Data"): st.dataframe(df.head(8), use_container_width=True)
                 if st.button("🔬 Process & Analyze", type="primary", use_container_width=True, key="batch_btn"):
                     with st.spinner("Processing expression data..."):
                         feat_df = process_raw_expression_data(df, ctrl if ctrl else None)
                         feat_df['study_id_encoded'] = sid
                         preds = np.clip(predict_stress(model, scaler, feat_df, feature_cols), 0, 100)
                         show_batch_results(feat_df, preds)
-            except Exception as e:
-                st.error(f"Error: {e}")
+            except Exception as e: st.error(f"Error: {e}")
+    
+    # HELP TAB
+    with tab4:
+        st.markdown('<p class="section-header">Getting Started Guide</p>', unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div style="font-family:Barlow;color:#f0f4f8;line-height:1.8;font-size:0.95rem;margin-bottom:20px;">
+        This guide will help you find and download gene expression data from NASA's Open Science Data Repository (OSDR) to use with StellarSeq.
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Step 1
+        st.markdown("""
+        <div class="help-step">
+            <span class="help-step-number">1</span>
+            <span class="help-step-title">Access NASA OSDR</span>
+            <p style="font-family:Barlow;color:#9ca3af;margin:12px 0 0 40px;font-size:0.9rem;line-height:1.6;">
+            Visit the NASA Open Science Data Repository search portal:<br>
+            <a href="https://osdr.nasa.gov/bio/repo/search" target="_blank" class="help-link">
+            🔗 https://osdr.nasa.gov/bio/repo/search
+            </a>
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Step 2
+        st.markdown("""
+        <div class="help-step">
+            <span class="help-step-number">2</span>
+            <span class="help-step-title">Filter Your Search</span>
+            <p style="font-family:Barlow;color:#9ca3af;margin:12px 0 8px 40px;font-size:0.9rem;line-height:1.6;">
+            Use these filters to find compatible datasets:
+            </p>
+            <ul style="font-family:Barlow;color:#f0f4f8;margin-left:40px;font-size:0.9rem;line-height:1.8;">
+                <li><strong style="color:#06b6d4;">Data Type:</strong> Transcriptomics, RNA-seq, or Microarray</li>
+                <li><strong style="color:#06b6d4;">Organism:</strong> Mus musculus (mouse) or Homo sapiens (human)</li>
+                <li><strong style="color:#06b6d4;">Factor:</strong> Spaceflight, Radiation, or Hindlimb Unloading</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Step 3
+        st.markdown("""
+        <div class="help-step">
+            <span class="help-step-number">3</span>
+            <span class="help-step-title">Download Expression Files</span>
+            <p style="font-family:Barlow;color:#9ca3af;margin:12px 0 8px 40px;font-size:0.9rem;line-height:1.6;">
+            Once you find a study (e.g., OSD-87):
+            </p>
+            <ol style="font-family:Barlow;color:#f0f4f8;margin-left:40px;font-size:0.9rem;line-height:1.8;">
+                <li>Click on the study to open its page</li>
+                <li>Navigate to the <strong style="color:#10b981;">"Study Files"</strong> tab</li>
+                <li>Look for and download files with these names:</li>
+            </ol>
+            <div style="margin-left:40px;margin-top:12px;">
+                <span class="file-tag">*_differential_expression.csv</span>
+                <span class="file-tag">*_normalized_counts.csv</span>
+                <span class="file-tag">*_Unnormalized_Counts.csv</span>
+                <span class="file-tag">RSEM_Unnormalized_Counts.csv</span>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("---")
+        
+        # Recommended Studies Table
+        st.markdown('<p class="section-header">Recommended Studies</p>', unsafe_allow_html=True)
+        
+        st.markdown("""
+        <table class="help-table">
+            <thead>
+                <tr>
+                    <th>Study ID</th>
+                    <th>Organism</th>
+                    <th>Condition</th>
+                    <th>Recommended File</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="https://osdr.nasa.gov/bio/repo/data/studies/OSD-4" target="_blank" class="help-link">OSD-4</a></td>
+                    <td>Mouse</td>
+                    <td>Spaceflight</td>
+                    <td><span class="file-tag">*_differential_expression.csv</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://osdr.nasa.gov/bio/repo/data/studies/OSD-87" target="_blank" class="help-link">OSD-87</a></td>
+                    <td>Mouse</td>
+                    <td>Spaceflight</td>
+                    <td><span class="file-tag">RSEM_Unnormalized_Counts.csv</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://osdr.nasa.gov/bio/repo/data/studies/OSD-137" target="_blank" class="help-link">OSD-137</a></td>
+                    <td>Mouse</td>
+                    <td>Spaceflight</td>
+                    <td><span class="file-tag">*_normalized_counts.csv</span></td>
+                </tr>
+                <tr>
+                    <td><a href="https://osdr.nasa.gov/bio/repo/data/studies/OSD-13" target="_blank" class="help-link">OSD-13</a></td>
+                    <td>Human</td>
+                    <td>Spaceflight</td>
+                    <td><span class="file-tag">*_differential_expression.csv</span></td>
+                </tr>
+            </tbody>
+        </table>
+        """, unsafe_allow_html=True)
+        
+        # Quick Start Tip
+        st.markdown("""
+        <div class="tip-box">
+            <div class="tip-box-title">💡 Quick Start</div>
+            <p style="font-family:Barlow;color:#f0f4f8;margin:0;font-size:0.9rem;line-height:1.6;">
+            Try <a href="https://osdr.nasa.gov/bio/repo/data/studies/OSD-4" target="_blank" class="help-link" style="color:#f59e0b;">OSD-4</a> for a quick test! 
+            Go to Study Files → Download the differential expression CSV → Upload it in the Batch Upload tab.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("---")
+        
+        # Expected Data Format
+        st.markdown('<p class="section-header">Expected Data Format</p>', unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div style="font-family:Barlow;color:#9ca3af;font-size:0.9rem;line-height:1.6;margin-bottom:16px;">
+        Your uploaded file should be a gene expression matrix structured like this:
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Sample data preview
+        sample_data = pd.DataFrame({
+            'ENSEMBL': ['ENSMUSG00000000001', 'ENSMUSG00000000003', 'ENSMUSG00000000028'],
+            'SYMBOL': ['Gnai3', 'Pbsn', 'Cdc45'],
+            'Mmus_LVR_FLT_Rep1': [1245.6, 0.0, 532.8],
+            'Mmus_LVR_FLT_Rep2': [1302.1, 0.0, 498.3],
+            'Mmus_LVR_GC_Rep1': [1198.4, 0.0, 612.1],
+            'Mmus_LVR_GC_Rep2': [1156.2, 0.0, 589.7]
+        })
+        st.dataframe(sample_data, use_container_width=True, hide_index=True)
+        
+        st.markdown("""
+        <div style="font-family:Barlow;color:#9ca3af;font-size:0.85rem;line-height:1.8;margin-top:16px;">
+        <strong style="color:#f0f4f8;">Sample naming convention:</strong><br>
+        <code style="background:rgba(6,182,212,0.15);padding:2px 6px;border-radius:4px;color:#06b6d4;">Mmus_LVR_FLT_Rep1</code> 
+        → <span style="color:#10b981;">Mouse</span>, <span style="color:#ec4899;">Liver</span>, <span style="color:#f59e0b;">Flight</span>, Replicate 1
+        <br><br>
+        <strong style="color:#f0f4f8;">Recognized patterns:</strong><br>
+        • <strong>Organisms:</strong> Mmus, Hsap, MOUSE, HUMAN<br>
+        • <strong>Conditions:</strong> FLT (flight), GC (ground control), HZE (radiation), HLU (hindlimb unload)<br>
+        • <strong>Tissues:</strong> LVR (liver), TMS (thymus), MUS (muscle), BLD (blood), RTN (retina), SKN (skin)
+        </div>
+        """, unsafe_allow_html=True)
     
     st.markdown('<div class="footer"><span style="color:#06b6d4;font-family:Sora;font-weight:500;">StellarSeq</span> v1.0 &nbsp;•&nbsp; Powered by NASA OSDR Data &nbsp;•&nbsp; Built by <span style="color:#ec4899;">Meera Kirthiraj</span></div>', unsafe_allow_html=True)
 
