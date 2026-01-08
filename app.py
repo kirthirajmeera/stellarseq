@@ -24,23 +24,49 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# SEO Meta Tags
+# SEO Meta Tags - Injected via JavaScript for Streamlit
 st.markdown("""
-<head>
-    <meta name="google-site-verification" content="ao8WVci9E-dJlHQBQrTHEuHXiJU5Mk55rkCGBwfmS6A" />
-    <meta name="description" content="StellarSeq - AI-powered astronaut genetic stress predictor. Analyze gene expression data from NASA spaceflight studies to predict stress severity using machine learning.">
-    <meta name="keywords" content="NASA, spaceflight, gene expression, stress prediction, astronaut health, machine learning, OSDR, GeneLab, bioinformatics">
-    <meta name="author" content="Meera Kirthiraj">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="StellarSeq - Astronaut Genetic Stress Predictor">
-    <meta property="og:description" content="AI-powered tool for predicting astronaut stress from gene expression data using NASA spaceflight genomics.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://stellarseq.streamlit.app">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="StellarSeq - Astronaut Stress Predictor">
-    <meta name="twitter:description" content="Predict astronaut genetic stress using NASA spaceflight data and machine learning.">
-    <link rel="canonical" href="https://stellarseq.streamlit.app">
-</head>
+<script>
+    // Google Site Verification
+    var meta = document.createElement('meta');
+    meta.name = 'google-site-verification';
+    meta.content = 'ao8WVci9E-dJlHQBQrTHEuHXiJU5Mk55rkCGBwfmS6A';
+    document.head.appendChild(meta);
+    
+    // Description
+    var desc = document.createElement('meta');
+    desc.name = 'description';
+    desc.content = 'StellarSeq - AI-powered astronaut genetic stress predictor. Analyze gene expression data from NASA spaceflight studies to predict stress severity using machine learning.';
+    document.head.appendChild(desc);
+    
+    // Keywords
+    var keywords = document.createElement('meta');
+    keywords.name = 'keywords';
+    keywords.content = 'NASA, spaceflight, gene expression, stress prediction, astronaut health, machine learning, OSDR, GeneLab, bioinformatics';
+    document.head.appendChild(keywords);
+    
+    // Author
+    var author = document.createElement('meta');
+    author.name = 'author';
+    author.content = 'Meera Kirthiraj';
+    document.head.appendChild(author);
+    
+    // Open Graph
+    var ogTitle = document.createElement('meta');
+    ogTitle.setAttribute('property', 'og:title');
+    ogTitle.content = 'StellarSeq - Astronaut Genetic Stress Predictor';
+    document.head.appendChild(ogTitle);
+    
+    var ogDesc = document.createElement('meta');
+    ogDesc.setAttribute('property', 'og:description');
+    ogDesc.content = 'AI-powered tool for predicting astronaut stress from gene expression data using NASA spaceflight genomics.';
+    document.head.appendChild(ogDesc);
+    
+    var ogUrl = document.createElement('meta');
+    ogUrl.setAttribute('property', 'og:url');
+    ogUrl.content = 'https://stellarseq.streamlit.app';
+    document.head.appendChild(ogUrl);
+</script>
 """, unsafe_allow_html=True)
 
 # ============================================================================
