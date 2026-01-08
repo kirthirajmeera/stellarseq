@@ -24,6 +24,24 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# SEO Meta Tags
+st.markdown("""
+<head>
+    <meta name="description" content="StellarSeq - AI-powered astronaut genetic stress predictor. Analyze gene expression data from NASA spaceflight studies to predict stress severity using machine learning.">
+    <meta name="keywords" content="NASA, spaceflight, gene expression, stress prediction, astronaut health, machine learning, OSDR, GeneLab, bioinformatics">
+    <meta name="author" content="Meera Kirthiraj">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="StellarSeq - Astronaut Genetic Stress Predictor">
+    <meta property="og:description" content="AI-powered tool for predicting astronaut stress from gene expression data using NASA spaceflight genomics.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stellarseq.streamlit.app">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="StellarSeq - Astronaut Stress Predictor">
+    <meta name="twitter:description" content="Predict astronaut genetic stress using NASA spaceflight data and machine learning.">
+    <link rel="canonical" href="https://stellarseq.streamlit.app">
+</head>
+""", unsafe_allow_html=True)
+
 # ============================================================================
 # REFINED SPACE THEME - Sora + Barlow
 # ============================================================================
