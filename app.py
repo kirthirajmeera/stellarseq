@@ -845,7 +845,7 @@ def main():
         </div>
         """, unsafe_allow_html=True)
     
-    st.markdown('<div class="footer"><span style="color:#06b6d4;font-family:Sora;font-weight:500;">StellarSeq</span> v1.0 &nbsp;•&nbsp; Powered by NASA OSDR Data &nbsp;•&nbsp; Built by <span style="color:#ec4899;">Meera Kirthiraj</span></div>', unsafe_allow_html=True)
+    st.markdown('<div class="footer"><span style="color:#06b6d4;font-family:Sora;font-weight:500;">StellarSeq</span> v1.0 &nbsp;•&nbsp; Powered by NASA OSDR Data &nbsp;•&nbsp; Built by <a href="https://www.linkedin.com/in/meerakirthiraj/" target="_blank" style="color:#ec4899;text-decoration:none;font-weight:500;">Meera Kirthiraj</a></div>', unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
