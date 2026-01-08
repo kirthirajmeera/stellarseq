@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 StellarSeq - Astronaut Genetic Stress Response Predictor
-Space-themed Professional Dashboard
+Professional Space-themed Dashboard
 
 Built by Meera Kirthiraj
 Powered by NASA OSDR Data
@@ -25,35 +25,34 @@ st.set_page_config(
 )
 
 # ============================================================================
-# SPACE THEME CSS - Professional Dark Mode
+# REFINED SPACE THEME - Sora + Barlow
 # ============================================================================
 st.markdown("""
 <style>
-    /* Import fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap');
+    /* Import Sora + Barlow */
+    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600;700&display=swap');
     
-    /* Root variables */
     :root {
-        --space-black: #0a0a0f;
-        --deep-space: #0d1117;
-        --nebula-purple: #1a1a2e;
-        --cosmic-blue: #16213e;
-        --star-white: #e6edf3;
-        --nebula-pink: #ff6b9d;
-        --cosmic-cyan: #00d4ff;
-        --aurora-green: #00ffa3;
-        --solar-orange: #ff9500;
-        --warning-red: #ff4757;
-        --subtle-gray: #8b949e;
+        --space-black: #05080d;
+        --deep-space: #0a0e17;
+        --nebula-dark: #111827;
+        --star-white: #f0f4f8;
+        --nebula-pink: #ec4899;
+        --cosmic-cyan: #06b6d4;
+        --aurora-green: #10b981;
+        --solar-orange: #f59e0b;
+        --warning-red: #ef4444;
+        --muted: #9ca3af;
+        --card-bg: rgba(17, 24, 39, 0.7);
     }
     
-    /* Main background */
+    /* Main background with dense starfield */
     .stApp {
-        background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0d1117 100%);
+        background: radial-gradient(ellipse at top, #0f172a 0%, #05080d 50%, #000000 100%);
         background-attachment: fixed;
     }
     
-    /* Animated stars */
+    /* Dense animated starfield */
     .stApp::before {
         content: '';
         position: fixed;
@@ -63,241 +62,314 @@ st.markdown("""
         height: 100%;
         pointer-events: none;
         background-image: 
-            radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
-            radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.5), transparent),
-            radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.6), transparent),
-            radial-gradient(2px 2px at 160px 120px, rgba(0,212,255,0.7), transparent),
-            radial-gradient(1px 1px at 230px 80px, rgba(255,255,255,0.4), transparent),
-            radial-gradient(2px 2px at 300px 150px, rgba(255,107,157,0.5), transparent),
-            radial-gradient(1px 1px at 370px 50px, rgba(255,255,255,0.7), transparent),
-            radial-gradient(2px 2px at 450px 180px, rgba(255,255,255,0.5), transparent),
-            radial-gradient(1px 1px at 520px 90px, rgba(0,255,163,0.4), transparent),
-            radial-gradient(2px 2px at 600px 140px, rgba(255,255,255,0.6), transparent),
-            radial-gradient(1px 1px at 680px 60px, rgba(0,212,255,0.5), transparent),
-            radial-gradient(2px 2px at 750px 200px, rgba(255,255,255,0.4), transparent),
-            radial-gradient(1px 1px at 820px 100px, rgba(255,107,157,0.6), transparent),
-            radial-gradient(2px 2px at 900px 170px, rgba(255,255,255,0.7), transparent);
+            /* Bright stars */
+            radial-gradient(2px 2px at 50px 50px, #ffffff, transparent),
+            radial-gradient(2px 2px at 150px 80px, #ffffff, transparent),
+            radial-gradient(2px 2px at 250px 120px, #ffffff, transparent),
+            radial-gradient(2px 2px at 350px 40px, #ffffff, transparent),
+            radial-gradient(2px 2px at 450px 160px, #ffffff, transparent),
+            radial-gradient(2px 2px at 550px 90px, #ffffff, transparent),
+            radial-gradient(2px 2px at 650px 140px, #ffffff, transparent),
+            radial-gradient(2px 2px at 750px 60px, #ffffff, transparent),
+            radial-gradient(2px 2px at 850px 180px, #ffffff, transparent),
+            radial-gradient(2px 2px at 950px 100px, #ffffff, transparent),
+            /* Medium stars */
+            radial-gradient(1.5px 1.5px at 100px 30px, rgba(255,255,255,0.9), transparent),
+            radial-gradient(1.5px 1.5px at 200px 150px, rgba(255,255,255,0.9), transparent),
+            radial-gradient(1.5px 1.5px at 300px 70px, rgba(255,255,255,0.9), transparent),
+            radial-gradient(1.5px 1.5px at 400px 190px, rgba(255,255,255,0.9), transparent),
+            radial-gradient(1.5px 1.5px at 500px 110px, rgba(255,255,255,0.9), transparent),
+            radial-gradient(1.5px 1.5px at 600px 20px, rgba(255,255,255,0.9), transparent),
+            radial-gradient(1.5px 1.5px at 700px 170px, rgba(255,255,255,0.9), transparent),
+            radial-gradient(1.5px 1.5px at 800px 130px, rgba(255,255,255,0.9), transparent),
+            radial-gradient(1.5px 1.5px at 900px 50px, rgba(255,255,255,0.9), transparent),
+            /* Small stars */
+            radial-gradient(1px 1px at 25px 80px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 75px 140px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 125px 20px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 175px 100px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 225px 180px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 275px 60px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 325px 130px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 375px 10px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 425px 90px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 475px 170px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 525px 40px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 575px 120px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 625px 200px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 675px 70px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 725px 150px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 775px 30px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 825px 110px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 875px 190px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 925px 55px, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 975px 135px, rgba(255,255,255,0.7), transparent),
+            /* Colored accent stars */
+            radial-gradient(2px 2px at 180px 45px, rgba(6,182,212,0.8), transparent),
+            radial-gradient(2px 2px at 420px 125px, rgba(236,72,153,0.8), transparent),
+            radial-gradient(2px 2px at 680px 85px, rgba(16,185,129,0.8), transparent),
+            radial-gradient(2px 2px at 880px 165px, rgba(6,182,212,0.8), transparent);
         background-repeat: repeat;
-        background-size: 1000px 250px;
-        animation: twinkle 8s ease-in-out infinite alternate;
+        background-size: 1000px 220px;
+        animation: twinkle 4s ease-in-out infinite alternate;
         z-index: 0;
     }
     
     @keyframes twinkle {
-        0% { opacity: 0.4; }
-        50% { opacity: 0.7; }
-        100% { opacity: 0.5; }
+        0% { opacity: 0.6; }
+        100% { opacity: 1; }
     }
     
     /* Sidebar */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, rgba(13,17,23,0.95) 0%, rgba(26,26,46,0.95) 100%);
-        border-right: 1px solid rgba(0,212,255,0.2);
+        background: linear-gradient(180deg, rgba(10,14,23,0.97) 0%, rgba(17,24,39,0.97) 100%);
+        border-right: 1px solid rgba(6,182,212,0.15);
     }
     
     [data-testid="stSidebar"] .stMarkdown { color: var(--star-white); }
     
-    /* Main header */
+    /* Typography */
     .main-header {
-        font-family: 'Orbitron', monospace;
-        font-size: 3.5rem;
-        font-weight: 800;
+        font-family: 'Sora', sans-serif;
+        font-size: 3rem;
+        font-weight: 700;
         text-align: center;
         margin-bottom: 0;
         padding-top: 1rem;
-        background: linear-gradient(135deg, #00d4ff 0%, #ff6b9d 50%, #00ffa3 100%);
+        background: linear-gradient(135deg, #06b6d4 0%, #ec4899 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        letter-spacing: 4px;
-        animation: glow 3s ease-in-out infinite alternate;
-    }
-    
-    @keyframes glow {
-        from { filter: drop-shadow(0 0 20px rgba(0,212,255,0.4)); }
-        to { filter: drop-shadow(0 0 30px rgba(255,107,157,0.4)); }
+        letter-spacing: 1px;
     }
     
     .sub-header {
-        font-family: 'Exo 2', sans-serif;
-        font-size: 1.3rem;
-        font-weight: 300;
-        color: var(--subtle-gray);
+        font-family: 'Barlow', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: var(--muted);
         text-align: center;
         margin-bottom: 2rem;
-        letter-spacing: 3px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    
+    .section-header {
+        font-family: 'Sora', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--cosmic-cyan);
+        margin: 1.5rem 0 1rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(6,182,212,0.3);
+        letter-spacing: 0.5px;
         text-transform: uppercase;
     }
     
     /* Tabs */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
-        background: rgba(13,17,23,0.6);
-        padding: 8px;
-        border-radius: 12px;
-        border: 1px solid rgba(0,212,255,0.2);
+        gap: 4px;
+        background: rgba(17,24,39,0.6);
+        padding: 6px;
+        border-radius: 10px;
+        border: 1px solid rgba(6,182,212,0.15);
     }
     
     .stTabs [data-baseweb="tab"] {
-        font-family: 'Exo 2', sans-serif;
+        font-family: 'Sora', sans-serif;
         font-weight: 500;
-        color: var(--subtle-gray);
+        font-size: 0.9rem;
+        color: var(--muted);
         background: transparent;
-        border-radius: 8px;
-        padding: 12px 24px;
+        border-radius: 6px;
+        padding: 10px 20px;
     }
     
     .stTabs [data-baseweb="tab"]:hover {
         color: var(--cosmic-cyan);
-        background: rgba(0,212,255,0.1);
+        background: rgba(6,182,212,0.1);
     }
     
     .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, rgba(0,212,255,0.2) 0%, rgba(255,107,157,0.2) 100%) !important;
+        background: rgba(6,182,212,0.15) !important;
         color: var(--star-white) !important;
-        border: 1px solid rgba(0,212,255,0.4);
+        border: 1px solid rgba(6,182,212,0.3);
     }
     
-    .stMarkdown, .stText { color: var(--star-white); }
+    .stMarkdown, .stText { color: var(--star-white); font-family: 'Barlow', sans-serif; }
     
     /* Inputs */
     .stNumberInput > div > div > input,
     .stTextInput > div > div > input,
     .stSelectbox > div > div {
-        background: rgba(13,17,23,0.8) !important;
-        border: 1px solid rgba(0,212,255,0.3) !important;
+        background: rgba(17,24,39,0.8) !important;
+        border: 1px solid rgba(6,182,212,0.2) !important;
         color: var(--star-white) !important;
-        border-radius: 8px !important;
-        font-family: 'Exo 2', sans-serif !important;
+        border-radius: 6px !important;
+        font-family: 'Barlow', sans-serif !important;
     }
     
     /* Buttons */
     .stButton > button {
-        font-family: 'Orbitron', monospace !important;
+        font-family: 'Sora', sans-serif !important;
         font-weight: 600 !important;
-        letter-spacing: 2px !important;
-        background: linear-gradient(135deg, #00d4ff 0%, #00ffa3 100%) !important;
-        color: #0a0a0f !important;
+        font-size: 0.85rem !important;
+        letter-spacing: 1px !important;
+        background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%) !important;
+        color: #05080d !important;
         border: none !important;
-        border-radius: 8px !important;
-        padding: 12px 32px !important;
+        border-radius: 6px !important;
+        padding: 10px 24px !important;
         text-transform: uppercase !important;
+        transition: all 0.2s ease !important;
     }
     
     .stButton > button:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 8px 25px rgba(0,212,255,0.4) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 6px 20px rgba(6,182,212,0.35) !important;
     }
     
     .stDownloadButton > button {
-        font-family: 'Exo 2', sans-serif !important;
-        background: rgba(0,212,255,0.2) !important;
-        border: 1px solid rgba(0,212,255,0.4) !important;
+        font-family: 'Barlow', sans-serif !important;
+        background: rgba(6,182,212,0.15) !important;
+        border: 1px solid rgba(6,182,212,0.3) !important;
         color: var(--cosmic-cyan) !important;
     }
     
     /* Metrics */
     [data-testid="stMetric"] {
-        background: linear-gradient(135deg, rgba(13,17,23,0.9) 0%, rgba(26,26,46,0.9) 100%);
-        border: 1px solid rgba(0,212,255,0.2);
-        border-radius: 12px;
-        padding: 16px;
-    }
-    
-    [data-testid="stMetric"]:hover {
-        border-color: rgba(0,212,255,0.5);
-        box-shadow: 0 4px 20px rgba(0,212,255,0.2);
+        background: var(--card-bg);
+        border: 1px solid rgba(6,182,212,0.15);
+        border-radius: 8px;
+        padding: 14px;
     }
     
     [data-testid="stMetricLabel"] {
-        font-family: 'Exo 2', sans-serif !important;
-        color: var(--subtle-gray) !important;
+        font-family: 'Barlow', sans-serif !important;
+        color: var(--muted) !important;
+        font-size: 0.8rem !important;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
     }
     
     [data-testid="stMetricValue"] {
-        font-family: 'Orbitron', monospace !important;
+        font-family: 'Sora', sans-serif !important;
         color: var(--cosmic-cyan) !important;
-        font-weight: 700 !important;
+        font-weight: 600 !important;
     }
     
     /* File uploader */
     [data-testid="stFileUploader"] {
-        background: rgba(13,17,23,0.6);
-        border: 2px dashed rgba(0,212,255,0.3);
-        border-radius: 12px;
-        padding: 20px;
-    }
-    
-    [data-testid="stFileUploader"]:hover {
-        border-color: rgba(0,212,255,0.6);
+        background: rgba(17,24,39,0.5);
+        border: 1px dashed rgba(6,182,212,0.3);
+        border-radius: 8px;
+        padding: 16px;
     }
     
     /* Messages */
-    .stSuccess { background: rgba(0,255,163,0.1) !important; border: 1px solid rgba(0,255,163,0.3) !important; }
-    .stWarning { background: rgba(255,149,0,0.1) !important; border: 1px solid rgba(255,149,0,0.3) !important; }
-    .stError { background: rgba(255,71,87,0.1) !important; border: 1px solid rgba(255,71,87,0.3) !important; }
+    .stSuccess { background: rgba(16,185,129,0.1) !important; border: 1px solid rgba(16,185,129,0.3) !important; border-radius: 6px !important; }
+    .stWarning { background: rgba(245,158,11,0.1) !important; border: 1px solid rgba(245,158,11,0.3) !important; border-radius: 6px !important; }
+    .stError { background: rgba(239,68,68,0.1) !important; border: 1px solid rgba(239,68,68,0.3) !important; border-radius: 6px !important; }
     
     hr {
         border: none;
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(0,212,255,0.3), transparent);
-        margin: 2rem 0;
+        background: linear-gradient(90deg, transparent, rgba(6,182,212,0.2), transparent);
+        margin: 1.5rem 0;
     }
     
-    .section-header {
-        font-family: 'Orbitron', monospace;
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--cosmic-cyan);
-        margin: 1.5rem 0 1rem 0;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid rgba(0,212,255,0.3);
-        letter-spacing: 2px;
+    /* Clean Stress Index Tiles */
+    .stress-index-container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 8px;
     }
     
-    .stress-badge {
-        display: inline-block;
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-family: 'Orbitron', monospace;
-        font-weight: 600;
-        font-size: 0.9rem;
-        letter-spacing: 1px;
+    .stress-tile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 6px;
+        font-family: 'Barlow', sans-serif;
+        font-weight: 500;
+        font-size: 0.85rem;
+        transition: all 0.2s ease;
     }
     
-    .stress-low { background: rgba(0,255,163,0.2); border: 1px solid rgba(0,255,163,0.5); color: #00ffa3; }
-    .stress-moderate { background: rgba(255,149,0,0.2); border: 1px solid rgba(255,149,0,0.5); color: #ff9500; }
-    .stress-high { background: rgba(255,107,157,0.2); border: 1px solid rgba(255,107,157,0.5); color: #ff6b9d; }
-    .stress-severe { background: rgba(255,71,87,0.2); border: 1px solid rgba(255,71,87,0.5); color: #ff4757; }
+    .stress-tile:hover {
+        transform: translateX(4px);
+    }
+    
+    .stress-tile-low {
+        background: rgba(16,185,129,0.1);
+        border: 1px solid rgba(16,185,129,0.3);
+        color: #10b981;
+    }
+    
+    .stress-tile-moderate {
+        background: rgba(245,158,11,0.1);
+        border: 1px solid rgba(245,158,11,0.3);
+        color: #f59e0b;
+    }
+    
+    .stress-tile-high {
+        background: rgba(236,72,153,0.1);
+        border: 1px solid rgba(236,72,153,0.3);
+        color: #ec4899;
+    }
+    
+    .stress-tile-severe {
+        background: rgba(239,68,68,0.1);
+        border: 1px solid rgba(239,68,68,0.3);
+        color: #ef4444;
+    }
+    
+    .stress-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+    
+    .stress-range {
+        margin-left: auto;
+        font-size: 0.75rem;
+        opacity: 0.7;
+    }
     
     .footer {
-        font-family: 'Exo 2', sans-serif;
+        font-family: 'Barlow', sans-serif;
         text-align: center;
-        color: var(--subtle-gray);
+        color: var(--muted);
         padding: 2rem 0;
         margin-top: 3rem;
-        border-top: 1px solid rgba(0,212,255,0.2);
-        font-size: 0.9rem;
-        letter-spacing: 1px;
+        border-top: 1px solid rgba(6,182,212,0.15);
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
     }
     
     .sidebar-card {
-        background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(255,107,157,0.05) 100%);
-        border: 1px solid rgba(0,212,255,0.2);
-        border-radius: 12px;
-        padding: 16px;
-        margin: 12px 0;
+        background: rgba(6,182,212,0.05);
+        border: 1px solid rgba(6,182,212,0.15);
+        border-radius: 8px;
+        padding: 14px;
+        margin: 10px 0;
+    }
+    
+    /* Dialog/Modal styling */
+    [data-testid="stModal"] {
+        background: rgba(10,14,23,0.98) !important;
     }
     
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
     
-    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--deep-space); }
-    ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, var(--cosmic-cyan), var(--nebula-pink)); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb { background: var(--cosmic-cyan); border-radius: 3px; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -317,10 +389,10 @@ def load_model():
 
 
 def get_stress_category(score):
-    if score < 25: return "LOW", "stress-low", "🟢", "#00ffa3"
-    elif score < 50: return "MODERATE", "stress-moderate", "🟡", "#ff9500"
-    elif score < 75: return "HIGH", "stress-high", "🔴", "#ff6b9d"
-    else: return "SEVERE", "stress-severe", "⛔", "#ff4757"
+    if score < 25: return "LOW", "stress-tile-low", "🟢", "#10b981"
+    elif score < 50: return "MODERATE", "stress-tile-moderate", "🟡", "#f59e0b"
+    elif score < 75: return "HIGH", "stress-tile-high", "🔴", "#ec4899"
+    else: return "SEVERE", "stress-tile-severe", "⛔", "#ef4444"
 
 
 def create_gauge_chart(score):
@@ -328,24 +400,23 @@ def create_gauge_chart(score):
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
         value=score,
-        number={'font': {'size': 60, 'color': color, 'family': 'Orbitron'}},
+        number={'font': {'size': 48, 'color': color, 'family': 'Sora'}},
         domain={'x': [0, 1], 'y': [0, 1]},
-        title={'text': "STRESS SEVERITY INDEX", 'font': {'size': 16, 'color': '#8b949e', 'family': 'Exo 2'}},
         gauge={
-            'axis': {'range': [0, 100], 'tickcolor': "#8b949e", 'tickfont': {'color': '#8b949e', 'family': 'Orbitron'}},
-            'bar': {'color': color, 'thickness': 0.8},
-            'bgcolor': "rgba(13,17,23,0.8)",
-            'borderwidth': 2,
-            'bordercolor': "rgba(0,212,255,0.3)",
+            'axis': {'range': [0, 100], 'tickcolor': "#6b7280", 'tickfont': {'color': '#6b7280', 'family': 'Barlow', 'size': 10}},
+            'bar': {'color': color, 'thickness': 0.75},
+            'bgcolor': "rgba(17,24,39,0.8)",
+            'borderwidth': 1,
+            'bordercolor': "rgba(6,182,212,0.2)",
             'steps': [
-                {'range': [0, 25], 'color': 'rgba(0,255,163,0.15)'},
-                {'range': [25, 50], 'color': 'rgba(255,149,0,0.15)'},
-                {'range': [50, 75], 'color': 'rgba(255,107,157,0.15)'},
-                {'range': [75, 100], 'color': 'rgba(255,71,87,0.15)'}
+                {'range': [0, 25], 'color': 'rgba(16,185,129,0.12)'},
+                {'range': [25, 50], 'color': 'rgba(245,158,11,0.12)'},
+                {'range': [50, 75], 'color': 'rgba(236,72,153,0.12)'},
+                {'range': [75, 100], 'color': 'rgba(239,68,68,0.12)'}
             ],
         }
     ))
-    fig.update_layout(height=280, margin=dict(l=30, r=30, t=60, b=30), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_layout(height=200, margin=dict(l=20, r=20, t=30, b=20), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
     return fig
 
 
@@ -357,15 +428,15 @@ def create_feature_importance_chart(model, feature_names):
         fig = go.Figure(go.Bar(
             x=importances[indices], y=[feature_names[i] for i in indices],
             orientation='h',
-            marker=dict(color=importances[indices], colorscale=[[0, '#00ffa3'], [0.5, '#00d4ff'], [1, '#ff6b9d']])
+            marker=dict(color=importances[indices], colorscale=[[0, '#10b981'], [0.5, '#06b6d4'], [1, '#ec4899']])
         ))
         fig.update_layout(
-            title=dict(text="FEATURE IMPORTANCE", font=dict(family='Orbitron', size=16, color='#00d4ff')),
-            height=400, margin=dict(l=20, r=20, t=60, b=20),
+            title=dict(text="Feature Importance", font=dict(family='Sora', size=14, color='#06b6d4')),
+            height=350, margin=dict(l=20, r=20, t=50, b=20),
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
-            xaxis=dict(gridcolor='rgba(0,212,255,0.1)', color='#8b949e'),
-            yaxis=dict(categoryorder='total ascending', color='#8b949e'),
-            font=dict(family='Exo 2', color='#8b949e')
+            xaxis=dict(gridcolor='rgba(6,182,212,0.1)', color='#9ca3af'),
+            yaxis=dict(categoryorder='total ascending', color='#9ca3af'),
+            font=dict(family='Barlow', color='#9ca3af', size=11)
         )
         return fig
     except: return None
@@ -393,7 +464,6 @@ def process_raw_expression_data(df, control_pattern=None):
     if expr.max().max() > 100: expr = np.log2(expr + 1)
     ctrl_cols = [c for c in sample_cols if any(x in c.upper() for x in (['_GC_', '_CTRL', '_CON', 'CONTROL', 'GROUND'] if not control_pattern else [control_pattern.upper()]))]
     ctrl_mean = expr[ctrl_cols].mean(axis=1) if ctrl_cols else expr.mean(axis=1)
-    if not ctrl_cols: st.warning("⚠️ No control samples detected.")
     results = []
     for s in sample_cols:
         m = parse_sample_name(s)
@@ -402,128 +472,258 @@ def process_raw_expression_data(df, control_pattern=None):
     return pd.DataFrame(results)
 
 
+# Dialog for Single Prediction Results
+@st.dialog("Analysis Results", width="large")
+def show_single_result(pred, condition):
+    cat, css, emoji, color = get_stress_category(pred)
+    
+    col1, col2 = st.columns([1.5, 1])
+    
+    with col1:
+        st.plotly_chart(create_gauge_chart(pred), use_container_width=True)
+    
+    with col2:
+        st.markdown(f"""
+        <div style="padding: 20px; text-align: center;">
+            <div style="font-family: Sora; font-size: 0.8rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Classification</div>
+            <div style="font-family: Sora; font-size: 1.8rem; font-weight: 600; color: {color}; margin-bottom: 16px;">{emoji} {cat}</div>
+            <div style="font-family: Barlow; font-size: 0.85rem; color: #9ca3af; margin-bottom: 4px;">Condition</div>
+            <div style="font-family: Sora; font-size: 1rem; color: #f0f4f8;">{condition}</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.markdown("---")
+    
+    if cat == "LOW":
+        st.success("**Low Stress** — Minimal gene expression changes. Sample within normal parameters.")
+    elif cat == "MODERATE":
+        st.warning("**Moderate Stress** — Measurable signatures detected. Adaptive responses in manageable range.")
+    elif cat == "HIGH":
+        st.warning("**High Stress** — Significant dysregulation. Recommend monitoring for physiological impacts.")
+    else:
+        st.error("**Severe Stress** — Extensive changes detected. Immediate assessment recommended.")
+    
+    if st.button("Close", use_container_width=True):
+        st.rerun()
+
+
+# Dialog for Batch Prediction Results  
+@st.dialog("Batch Analysis Results", width="large")
+def show_batch_results(feat_df, preds):
+    feat_df['predicted_stress_score'] = preds
+    feat_df['stress_category'] = [get_stress_category(p)[0] for p in preds]
+    
+    col1, col2, col3, col4 = st.columns(4)
+    with col1: st.metric("Mean", f"{preds.mean():.1f}")
+    with col2: st.metric("Min", f"{preds.min():.1f}")
+    with col3: st.metric("Max", f"{preds.max():.1f}")
+    with col4: st.metric("High Stress", f"{(preds >= 50).sum()}/{len(preds)}")
+    
+    st.markdown("---")
+    
+    st.dataframe(
+        feat_df[['sample_id', 'organism', 'condition', 'tissue', 'predicted_stress_score', 'stress_category']].round({'predicted_stress_score': 1}),
+        use_container_width=True,
+        height=250
+    )
+    
+    fig = px.histogram(feat_df, x='predicted_stress_score', color='condition', nbins=15, barmode='overlay', 
+                       color_discrete_sequence=['#06b6d4', '#ec4899', '#10b981', '#f59e0b'])
+    fig.update_layout(
+        paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
+        font=dict(family='Barlow', color='#9ca3af', size=11),
+        height=250, margin=dict(l=20, r=20, t=30, b=20),
+        xaxis=dict(gridcolor='rgba(6,182,212,0.1)'),
+        yaxis=dict(gridcolor='rgba(6,182,212,0.1)')
+    )
+    st.plotly_chart(fig, use_container_width=True)
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.download_button("📥 Download CSV", feat_df.to_csv(index=False), "stellarseq_results.csv", "text/csv", use_container_width=True)
+    with col2:
+        if st.button("Close", use_container_width=True):
+            st.rerun()
+
+
 def main():
-    st.markdown('<h1 class="main-header">STELLARSEQ</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-header">StellarSeq</h1>', unsafe_allow_html=True)
     st.markdown('<p class="sub-header">Astronaut Genetic Stress Response Predictor</p>', unsafe_allow_html=True)
     
     with st.sidebar:
-        st.markdown('<div style="text-align:center;padding:20px 0;"><span style="font-size:4rem;">🛸</span></div>', unsafe_allow_html=True)
-        st.markdown('<p class="section-header" style="font-size:1.1rem;">MISSION BRIEF</p>', unsafe_allow_html=True)
-        st.markdown('<div class="sidebar-card"><p style="color:#e6edf3;font-family:Exo 2;margin:0;font-size:0.9rem;"><strong style="color:#00d4ff;">StellarSeq</strong> predicts astronaut stress from gene expression using ML trained on NASA spaceflight genomics.</p></div>', unsafe_allow_html=True)
-        st.markdown('<p class="section-header" style="font-size:1rem;">MODEL STATS</p>', unsafe_allow_html=True)
+        st.markdown('<div style="text-align:center;padding:16px 0;"><span style="font-size:3rem;">🛸</span></div>', unsafe_allow_html=True)
+        st.markdown('<p class="section-header">Mission Brief</p>', unsafe_allow_html=True)
+        st.markdown('<div class="sidebar-card"><p style="color:#f0f4f8;font-family:Barlow;margin:0;font-size:0.9rem;line-height:1.6;"><strong style="color:#06b6d4;">StellarSeq</strong> predicts astronaut stress from gene expression using ML trained on NASA spaceflight genomics.</p></div>', unsafe_allow_html=True)
+        
+        st.markdown('<p class="section-header">Model Stats</p>', unsafe_allow_html=True)
         c1, c2 = st.columns(2)
         with c1: st.metric("R² Score", "0.974"); st.metric("Samples", "112")
         with c2: st.metric("RMSE", "2.92"); st.metric("Features", "14")
+        
         st.markdown("---")
-        st.markdown('<p class="section-header" style="font-size:1rem;">STRESS INDEX</p>', unsafe_allow_html=True)
-        st.markdown('<div style="font-family:Exo 2;font-size:0.85rem;line-height:2;"><span class="stress-badge stress-low">🟢 LOW 0-25</span><br><span class="stress-badge stress-moderate">🟡 MODERATE 25-50</span><br><span class="stress-badge stress-high">🔴 HIGH 50-75</span><br><span class="stress-badge stress-severe">⛔ SEVERE 75-100</span></div>', unsafe_allow_html=True)
+        st.markdown('<p class="section-header">Stress Index</p>', unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class="stress-index-container">
+            <div class="stress-tile stress-tile-low">
+                <div class="stress-dot" style="background:#10b981;"></div>
+                <span>Low</span>
+                <span class="stress-range">0-25</span>
+            </div>
+            <div class="stress-tile stress-tile-moderate">
+                <div class="stress-dot" style="background:#f59e0b;"></div>
+                <span>Moderate</span>
+                <span class="stress-range">25-50</span>
+            </div>
+            <div class="stress-tile stress-tile-high">
+                <div class="stress-dot" style="background:#ec4899;"></div>
+                <span>High</span>
+                <span class="stress-range">50-75</span>
+            </div>
+            <div class="stress-tile stress-tile-severe">
+                <div class="stress-dot" style="background:#ef4444;"></div>
+                <span>Severe</span>
+                <span class="stress-range">75-100</span>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
     
     model, scaler, metadata = load_model()
     if model is None: st.error("⚠️ Model not loaded."); return
     
     feature_cols = ['mean_expression', 'std_expression', 'median_expression', 'gene_count', 'mean_fold_change', 'std_fold_change', 'mean_abs_fold_change', 'n_upregulated', 'n_downregulated', 'n_significant', 'organism_code_encoded', 'condition_encoded', 'tissue_encoded', 'study_id_encoded']
     
-    tab1, tab2, tab3 = st.tabs(["ℹ️ ABOUT", "🎯 SINGLE PREDICTION", "📡 BATCH UPLOAD"])
+    tab1, tab2, tab3 = st.tabs(["ℹ️ About", "🎯 Single Prediction", "📡 Batch Upload"])
     
+    # ABOUT TAB
     with tab1:
         c1, c2 = st.columns([2, 1])
         with c1:
-            st.markdown('<p class="section-header">MISSION OVERVIEW</p>', unsafe_allow_html=True)
-            st.markdown('<div style="font-family:Exo 2;color:#e6edf3;line-height:1.8;"><strong style="color:#00d4ff;">StellarSeq</strong> is an AI system for predicting astronaut genetic stress using ML trained on NASA OSDR data.<br><br><strong style="color:#ff6b9d;">Spaceflight</strong> induces biological stress:<ul style="color:#8b949e;"><li>Microgravity gene expression changes</li><li>Cosmic radiation effects</li><li>Circadian disruption</li><li>Immune modulation</li></ul></div>', unsafe_allow_html=True)
-            st.markdown('<p class="section-header">DATA SOURCES</p>', unsafe_allow_html=True)
-            st.markdown('<div style="font-family:Exo 2;color:#8b949e;line-height:1.8;">Trained on <strong style="color:#00ffa3;">9 spaceflight studies</strong> from NASA OSDR:<ul><li>Mouse & Human organisms</li><li>Multiple tissues</li><li>Spaceflight, radiation, ground analog</li></ul></div>', unsafe_allow_html=True)
+            st.markdown('<p class="section-header">Mission Overview</p>', unsafe_allow_html=True)
+            st.markdown("""
+            <div style="font-family:Barlow;color:#f0f4f8;line-height:1.8;font-size:0.95rem;">
+            <strong style="color:#06b6d4;">StellarSeq</strong> is an AI system for predicting astronaut genetic stress using machine learning trained on NASA's Open Science Data Repository (OSDR).
+            <br><br>
+            <strong style="color:#ec4899;">Spaceflight</strong> induces biological stress responses:
+            </div>
+            <ul style="font-family:Barlow;color:#9ca3af;line-height:1.8;font-size:0.9rem;margin-top:8px;">
+                <li>Microgravity-induced gene expression changes</li>
+                <li>Cosmic radiation exposure effects</li>
+                <li>Circadian rhythm disruption</li>
+                <li>Immune system modulation</li>
+            </ul>
+            """, unsafe_allow_html=True)
+            
+            st.markdown('<p class="section-header">Data Sources</p>', unsafe_allow_html=True)
+            st.markdown("""
+            <div style="font-family:Barlow;color:#9ca3af;line-height:1.8;font-size:0.9rem;">
+            Trained on <strong style="color:#10b981;">9 spaceflight studies</strong> from NASA OSDR including mouse and human organisms across multiple tissue types.
+            </div>
+            """, unsafe_allow_html=True)
+        
         with c2:
-            st.markdown('<p class="section-header">PERFORMANCE</p>', unsafe_allow_html=True)
-            st.markdown('<div style="background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(255,107,157,0.05));border:1px solid rgba(0,212,255,0.3);border-radius:12px;padding:20px;"><table style="width:100%;font-family:Exo 2;color:#e6edf3;"><tr><td style="padding:8px 0;color:#8b949e;">Algorithm</td><td style="text-align:right;color:#00d4ff;font-family:Orbitron;">XGBoost</td></tr><tr><td style="padding:8px 0;color:#8b949e;">R² Score</td><td style="text-align:right;color:#00ffa3;font-family:Orbitron;">0.974</td></tr><tr><td style="padding:8px 0;color:#8b949e;">RMSE</td><td style="text-align:right;color:#00ffa3;font-family:Orbitron;">2.92</td></tr><tr><td style="padding:8px 0;color:#8b949e;">MAE</td><td style="text-align:right;color:#00ffa3;font-family:Orbitron;">2.09</td></tr><tr><td style="padding:8px 0;color:#8b949e;">Samples</td><td style="text-align:right;color:#ff6b9d;font-family:Orbitron;">112</td></tr></table></div>', unsafe_allow_html=True)
+            st.markdown('<p class="section-header">Performance</p>', unsafe_allow_html=True)
+            st.markdown("""
+            <div style="background:rgba(6,182,212,0.05);border:1px solid rgba(6,182,212,0.2);border-radius:8px;padding:16px;">
+                <table style="width:100%;font-family:Barlow;color:#f0f4f8;font-size:0.9rem;">
+                    <tr><td style="padding:6px 0;color:#9ca3af;">Algorithm</td><td style="text-align:right;color:#06b6d4;font-family:Sora;font-weight:500;">XGBoost</td></tr>
+                    <tr><td style="padding:6px 0;color:#9ca3af;">R² Score</td><td style="text-align:right;color:#10b981;font-family:Sora;font-weight:500;">0.974</td></tr>
+                    <tr><td style="padding:6px 0;color:#9ca3af;">RMSE</td><td style="text-align:right;color:#10b981;font-family:Sora;font-weight:500;">2.92</td></tr>
+                    <tr><td style="padding:6px 0;color:#9ca3af;">MAE</td><td style="text-align:right;color:#10b981;font-family:Sora;font-weight:500;">2.09</td></tr>
+                    <tr><td style="padding:6px 0;color:#9ca3af;">Samples</td><td style="text-align:right;color:#ec4899;font-family:Sora;font-weight:500;">112</td></tr>
+                </table>
+            </div>
+            """, unsafe_allow_html=True)
+        
         st.markdown("---")
-        st.markdown('<p class="section-header">FEATURE ANALYSIS</p>', unsafe_allow_html=True)
+        st.markdown('<p class="section-header">Feature Analysis</p>', unsafe_allow_html=True)
         fig = create_feature_importance_chart(model, feature_cols)
         if fig: st.plotly_chart(fig, use_container_width=True)
-        st.markdown('<div style="background:rgba(255,149,0,0.1);border:1px solid rgba(255,149,0,0.3);border-radius:8px;padding:16px;margin-top:20px;"><p style="color:#ff9500;font-family:Exo 2;margin:0;font-size:0.9rem;"><strong>⚠️ DISCLAIMER:</strong> For research and educational purposes only.</p></div>', unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:6px;padding:14px;margin-top:16px;">
+            <p style="color:#f59e0b;font-family:Barlow;margin:0;font-size:0.85rem;">
+            <strong>Disclaimer:</strong> For research and educational purposes only. Predictions should be validated by qualified researchers.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
     
+    # SINGLE PREDICTION TAB
     with tab2:
-        st.markdown('<p class="section-header">MANUAL INPUT</p>', unsafe_allow_html=True)
+        st.markdown('<p class="section-header">Manual Input</p>', unsafe_allow_html=True)
+        
         c1, c2 = st.columns(2)
         with c1:
             st.markdown("##### Expression Statistics")
-            mean_expr = st.number_input("Mean Expression (log2)", value=8.5, step=0.1)
-            std_expr = st.number_input("Std Expression", value=2.0, step=0.1)
-            median_expr = st.number_input("Median Expression", value=8.0, step=0.1)
-            gene_count = st.number_input("Gene Count", value=15000, step=1000)
+            mean_expr = st.number_input("Mean Expression (log2)", value=8.5, step=0.1, key="s_mean")
+            std_expr = st.number_input("Std Expression", value=2.0, step=0.1, key="s_std")
+            median_expr = st.number_input("Median Expression", value=8.0, step=0.1, key="s_med")
+            gene_count = st.number_input("Gene Count", value=15000, step=1000, key="s_gc")
             st.markdown("##### Fold Change Metrics")
-            mean_fc = st.number_input("Mean Fold Change", value=0.5, step=0.1)
-            std_fc = st.number_input("Std Fold Change", value=1.0, step=0.1)
-            mean_abs_fc = st.number_input("Mean Abs Fold Change", value=0.8, step=0.1)
+            mean_fc = st.number_input("Mean Fold Change", value=0.5, step=0.1, key="s_mfc")
+            std_fc = st.number_input("Std Fold Change", value=1.0, step=0.1, key="s_sfc")
+            mean_abs_fc = st.number_input("Mean Abs Fold Change", value=0.8, step=0.1, key="s_mafc")
+        
         with c2:
             st.markdown("##### Differential Expression")
-            n_up = st.number_input("# Upregulated", value=500, step=100)
-            n_down = st.number_input("# Downregulated", value=500, step=100)
-            n_sig = st.number_input("# Significant", value=1000, step=100)
+            n_up = st.number_input("# Upregulated", value=500, step=100, key="s_up")
+            n_down = st.number_input("# Downregulated", value=500, step=100, key="s_down")
+            n_sig = st.number_input("# Significant", value=1000, step=100, key="s_sig")
             st.markdown("##### Sample Metadata")
-            organism = st.selectbox("Organism", ["Mouse", "Human"])
-            condition = st.selectbox("Condition", ["Ground Control", "Spaceflight", "Radiation", "Hindlimb Unload"])
-            tissue = st.selectbox("Tissue", ["Thymus", "Liver", "Muscle", "Blood", "Retina", "Skin", "Other"])
-            study_id = st.slider("Study ID", 0, 10, 5)
+            organism = st.selectbox("Organism", ["Mouse", "Human"], key="s_org")
+            condition = st.selectbox("Condition", ["Ground Control", "Spaceflight", "Radiation", "Hindlimb Unload"], key="s_cond")
+            tissue = st.selectbox("Tissue", ["Thymus", "Liver", "Muscle", "Blood", "Retina", "Skin", "Other"], key="s_tis")
+            study_id = st.slider("Study ID", 0, 10, 5, key="s_sid")
         
-        if st.button("🚀 INITIATE PREDICTION", type="primary", use_container_width=True):
+        st.markdown("")
+        
+        if st.button("🚀 Analyze Sample", type="primary", use_container_width=True, key="single_btn"):
             org_map = {"Mouse": 0, "Human": 1}
             cond_map = {"Ground Control": 0, "Spaceflight": 1, "Radiation": 2, "Hindlimb Unload": 3}
             tis_map = {"Thymus": 0, "Liver": 1, "Muscle": 2, "Blood": 3, "Retina": 4, "Skin": 5, "Other": 6}
             features = pd.DataFrame([[mean_expr, std_expr, median_expr, gene_count, mean_fc, std_fc, mean_abs_fc, n_up, n_down, n_sig, org_map[organism], cond_map[condition], tis_map[tissue], study_id]], columns=feature_cols)
             pred = np.clip(predict_stress(model, scaler, features, feature_cols)[0], 0, 100)
-            cat, css, emoji, color = get_stress_category(pred)
-            st.markdown("---")
-            st.markdown('<p class="section-header">ANALYSIS RESULTS</p>', unsafe_allow_html=True)
-            c1, c2, c3 = st.columns([1, 2, 1])
-            with c2: st.plotly_chart(create_gauge_chart(pred), use_container_width=True)
-            c1, c2, c3 = st.columns(3)
-            with c1: st.metric("Stress Score", f"{pred:.1f}")
-            with c2: st.markdown(f'<div style="text-align:center;padding:10px;"><span class="stress-badge {css}">{emoji} {cat}</span></div>', unsafe_allow_html=True)
-            with c3: st.metric("Condition", condition)
-            st.markdown("---")
-            if cat == "LOW": st.success("**✓ LOW STRESS** — Minimal changes detected.")
-            elif cat == "MODERATE": st.warning("**⚡ MODERATE STRESS** — Measurable signatures.")
-            elif cat == "HIGH": st.warning("**⚠️ HIGH STRESS** — Significant dysregulation.")
-            else: st.error("**🚨 SEVERE STRESS** — Immediate assessment recommended.")
+            show_single_result(pred, condition)
     
+    # BATCH UPLOAD TAB
     with tab3:
-        st.markdown('<p class="section-header">NASA OSDR DATA UPLOAD</p>', unsafe_allow_html=True)
-        with st.expander("📋 DATA FORMAT"):
-            st.markdown("**Expected:** Gene expression matrix (ENSEMBL, SYMBOL, Sample columns)")
-        uploaded = st.file_uploader("Upload Expression Matrix", type=['csv', 'tsv', 'txt'])
+        st.markdown('<p class="section-header">NASA OSDR Data Upload</p>', unsafe_allow_html=True)
+        
+        with st.expander("📋 Data Format Specification"):
+            st.markdown("""
+            **Expected format:** Gene expression matrix with genes as rows, samples as columns.
+            
+            | ENSEMBL | SYMBOL | Sample_FLT_Rep1 | Sample_GC_Rep1 | ... |
+            |---------|--------|-----------------|----------------|-----|
+            | ENSMUSG... | Gnai3 | 1245.6 | 1198.4 | ... |
+            
+            **Sample naming:** `Mmus_LVR_FLT_Rep1` → Mouse, Liver, Flight
+            """)
+        
+        uploaded = st.file_uploader("Upload Expression Matrix", type=['csv', 'tsv', 'txt'], key="batch_file")
+        
         c1, c2 = st.columns(2)
-        with c1: ctrl = st.text_input("Control pattern (optional)", placeholder="_GC_")
-        with c2: sid = st.number_input("Study ID", value=0)
+        with c1: ctrl = st.text_input("Control pattern (optional)", placeholder="_GC_", key="b_ctrl")
+        with c2: sid = st.number_input("Study ID", value=0, key="b_sid")
         
         if uploaded:
             try:
                 df = pd.read_csv(uploaded, sep='\t' if uploaded.name.endswith(('.tsv', '.txt')) else ',')
                 st.success(f"✅ Loaded: **{len(df):,} genes** × **{len(df.columns)} columns**")
-                with st.expander("Preview"): st.dataframe(df.head(10))
-                if st.button("🔬 PROCESS & ANALYZE", type="primary", use_container_width=True):
-                    with st.spinner("Processing..."):
+                
+                with st.expander("Preview Data"):
+                    st.dataframe(df.head(8), use_container_width=True)
+                
+                if st.button("🔬 Process & Analyze", type="primary", use_container_width=True, key="batch_btn"):
+                    with st.spinner("Processing expression data..."):
                         feat_df = process_raw_expression_data(df, ctrl if ctrl else None)
                         feat_df['study_id_encoded'] = sid
-                        st.success(f"✅ Processed **{len(feat_df)} samples**")
-                        st.dataframe(feat_df[['sample_id', 'organism', 'condition', 'tissue']])
                         preds = np.clip(predict_stress(model, scaler, feat_df, feature_cols), 0, 100)
-                        feat_df['predicted_stress_score'] = preds
-                        feat_df['stress_category'] = [get_stress_category(p)[0] for p in preds]
-                        st.markdown("---")
-                        st.markdown('<p class="section-header">🎯 RESULTS</p>', unsafe_allow_html=True)
-                        c1, c2, c3, c4 = st.columns(4)
-                        with c1: st.metric("Mean", f"{preds.mean():.1f}")
-                        with c2: st.metric("Min", f"{preds.min():.1f}")
-                        with c3: st.metric("Max", f"{preds.max():.1f}")
-                        with c4: st.metric("High Stress", f"{(preds >= 50).sum()}/{len(preds)}")
-                        st.dataframe(feat_df[['sample_id', 'organism', 'condition', 'tissue', 'predicted_stress_score', 'stress_category']])
-                        fig = px.histogram(feat_df, x='predicted_stress_score', color='condition', nbins=20, barmode='overlay', color_discrete_sequence=['#00d4ff', '#ff6b9d', '#00ffa3', '#ff9500'])
-                        fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font=dict(family='Exo 2', color='#8b949e'))
-                        st.plotly_chart(fig, use_container_width=True)
-                        st.download_button("📥 DOWNLOAD", feat_df.to_csv(index=False), "stellarseq_results.csv", "text/csv")
-            except Exception as e: st.error(f"Error: {e}")
+                        show_batch_results(feat_df, preds)
+            except Exception as e:
+                st.error(f"Error: {e}")
     
-    st.markdown('<div class="footer"><span style="color:#00d4ff;font-family:Orbitron;">STELLARSEQ</span> v1.0 &nbsp;|&nbsp; Powered by NASA OSDR Data &nbsp;|&nbsp; Built by <span style="color:#ff6b9d;">Meera Kirthiraj</span></div>', unsafe_allow_html=True)
+    st.markdown('<div class="footer"><span style="color:#06b6d4;font-family:Sora;font-weight:500;">StellarSeq</span> v1.0 &nbsp;•&nbsp; Powered by NASA OSDR Data &nbsp;•&nbsp; Built by <span style="color:#ec4899;">Meera Kirthiraj</span></div>', unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
