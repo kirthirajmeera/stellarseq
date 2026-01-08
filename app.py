@@ -27,6 +27,7 @@ st.set_page_config(
 # SEO Meta Tags
 st.markdown("""
 <head>
+    <meta name="google-site-verification" content="ao8WVci9E-dJlHQBQrTHEuHXiJU5Mk55rkCGBwfmS6A" />
     <meta name="description" content="StellarSeq - AI-powered astronaut genetic stress predictor. Analyze gene expression data from NASA spaceflight studies to predict stress severity using machine learning.">
     <meta name="keywords" content="NASA, spaceflight, gene expression, stress prediction, astronaut health, machine learning, OSDR, GeneLab, bioinformatics">
     <meta name="author" content="Meera Kirthiraj">
