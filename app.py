@@ -304,7 +304,7 @@ st.markdown("""
 
 @st.cache_resource
 def load_model():
-    model_path = Path("model")
+    model_path = Path(".")
     try:
         model = joblib.load(model_path / "best_model.pkl")
         scaler = joblib.load(model_path / "scaler.pkl")
